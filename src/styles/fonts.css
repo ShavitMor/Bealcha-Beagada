@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../fonts/StamSefaradCLM.ttf') format('truetype');
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OtherFont';
+  src: url('../fonts/shmulikclm-webfont.woff') format('woff'), /* Modern browsers */
+       url('../fonts/shmulikclm-webfont.ttf') format('truetype'); /* Fallback for legacy support */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sblFont';
+  src: url('../fonts/SBL_Hbrw.ttf') format('truetype');
+  font-weight: bolder;
+  font-style: normal;
+}

@@ -1,0 +1,31 @@
+@import '../styles/fonts.css';
+
+
+.header {
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #ccc;
+}
+
+/* Header.css */
+.gold-gradient-text {
+  background: linear-gradient(90deg, #ffcc00, #edd352, #ffd700, #ffcc33, #f4c430); /* Static gold gradient */
+  -webkit-background-clip: text; /* Clips gradient to the text */
+  -webkit-text-fill-color: transparent; /* Makes text color transparent */
+  font-weight: bold; /* Optional for emphasis */
+  display: inline-block; /* Ensures proper rendering */
+}
+/* Keyframes for animating the gradient */
+@keyframes goldGradient {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}

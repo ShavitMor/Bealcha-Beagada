@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bealcha-ve-beagada.netlify.app/sitemap.xml

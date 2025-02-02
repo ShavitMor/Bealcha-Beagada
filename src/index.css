@@ -1,0 +1,15 @@
+@import '../src/styles/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+}
+body{
+  background-color: rgb(69, 67, 67);
+}
