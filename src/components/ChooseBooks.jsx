@@ -37,23 +37,18 @@ const ChooseBook = () => {
             <motion.div
               key={index}
               variants={zoomInVariants}
-              className='flex flex-col items-center justify-start gap-2 p-4 w-full cursor-pointer bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'
+              className='flex flex-col items-center justify-start gap-2 p-4 w-full transition-all'
               onClick={() => handleBookClick(item.title)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+             
             >
-              <motion.div
-                className='w-[80px] h-[80px] border-4 border-yellow-500 rounded-lg p-2 flex items-center justify-center'
-                whileHover={{ rotate: 5, scale: 1.1 }}
-              >
+              <div className="w-[60%] mx-auto">
                 <img
                   src={item.icon}
                   alt="icon"
-                  className='w-full h-full object-contain'
+                  className='w-full h-full object-contain cursor-pointer'
                 />
-              </motion.div>
-              <h1 className='text-xl font-bold text-yellow-800 text-center mt-4'>{item.title}</h1>
-              <p className='text-[16px] text-yellow-700 text-center'>{item.about}</p>
+              </div>
+              <h1 className='text-xl font-bold text-yellow-800 text-center mt-4 cursor-pointer'>{item.title}</h1>
             </motion.div>
           ))}
         </motion.div>

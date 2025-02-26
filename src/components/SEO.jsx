@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 const SEO = ({ title, description, keywords, canonicalUrl }) => {
   return (
     <Helmet>
+      <meta name="application-name" content="בהלכה ובאגדה" />
+      <meta name="author" content="בהלכה ובאגדה" />
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
@@ -13,7 +15,6 @@ const SEO = ({ title, description, keywords, canonicalUrl }) => {
       <meta name="twitter:description" content={description} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       <meta name="robots" content="index, follow" />
-      <link rel="icon" href="../images/theIcon.png" />
 
     </Helmet>
   );

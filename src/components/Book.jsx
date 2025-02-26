@@ -8,6 +8,8 @@ import Header from '../components/Header';
 import '../styles/fonts.css';
 import whatsappIcon from '../images/WhatsApp.webp';
 import SEO from '../components/SEO';
+import { allProjects } from './export';
+
 
 // Helper functions (unchanged)
 const groupContentBySubject = (data) => {
@@ -49,10 +51,13 @@ const TextSpan = ({ item }) => {
     case "14px":
       className += " text-sm text-gray-600";
       break;
-    case "15px":
+    case "7pt":
       className += " text-sm text-gray-600";
       break;
-    case "16px":
+    case "8pt":
+      className += " text-l text-gray-600";
+      break;
+    case "8.5pt":
       className += " text-xl text-gray-700";
       break;
     case "17px":
@@ -198,6 +203,7 @@ const Paragraph = ({ content }) => {
     window.open(whatsappUrl, "_blank");
   };
 
+ 
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -235,10 +241,10 @@ const Paragraph = ({ content }) => {
 
       {/* Decorative line */}
       <motion.div className="flex items-center space-x-4 my-4 flex-row-reverse" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <div className={`h-px bg-gradient-to-r from-transparent ${isStory ? 'via-indigo-500' : 'via-yellow-500'} to-transparent flex-grow`} />
-        <div className={`w-2 h-2 rounded-full ${isStory ? 'bg-indigo-500' : 'bg-yellow-500'} animate-pulse`} />
-        <div className={`h-px bg-gradient-to-r from-transparent ${isStory ? 'via-indigo-500' : 'via-yellow-500'} to-transparent flex-grow`} />
-      </motion.div>
+  <div className={`h-px bg-gradient-to-r from-transparent ${isStory ? 'via-indigo-500' : 'via-white'} to-transparent flex-grow`} />
+  <div className={`w-2 h-2 rounded-full ${isStory ? 'bg-indigo-500' : 'bg-white'} animate-pulse`} />
+  <div className={`h-px bg-gradient-to-r from-transparent ${isStory ? 'via-indigo-500' : 'via-white'} to-transparent flex-grow`} />
+</motion.div>
     </motion.div>
   );
 };
@@ -327,6 +333,9 @@ const ReadingPage = () => {
     scrollToTop();
   }, []);
 
+ const project = allProjects.find(p => p.title === bookTitle); // Change to the title you want
+const backgroundColor = project ? project.color : "rgb(255, 255, 255)";
+
   return (
     <>
     <SEO 
@@ -337,7 +346,7 @@ const ReadingPage = () => {
       />
     <>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-purple-50 p-8">
+      <div className="min-h-screen p-8" style={{ background: `linear-gradient(to bottom left, ${backgroundColor}, rgb(244, 239, 248))` }}>
         <div className="max-w-3xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
