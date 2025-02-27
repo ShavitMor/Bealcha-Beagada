@@ -10866,25 +10866,9 @@
                 "font_size": "normal"
             },
             {
-                "text": "   ",
-                "font_size": "normal"
-            },
-            {
-                "text": "תם ונשלם שבח לאל בורא עולם   \n",
+                "text": "תם ונשלם שבח לאל בורא עולם   \n",
                 "font_size": "normal",
                 "bold": "true"
-            },
-            {
-                "text": "Converted to HTML with WordToHTML.net ",
-                "font_size": "11px"
-            },
-            {
-                "text": "| ",
-                "font_size": "11px"
-            },
-            {
-                "text": "Email Signature Generator",
-                "font_size": "11px"
             }
         ]
     }

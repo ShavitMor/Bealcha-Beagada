@@ -11,7 +11,7 @@ const books = [
   // Add more book titles
 ];
 
-const baseUrl = 'https://bealcha-ve-beagada.netlify.app';
+const baseUrl = 'https://bealaha-beagada.com/';
 const currentDate = new Date().toISOString().split('T')[0];
 
 // Generate sitemap content

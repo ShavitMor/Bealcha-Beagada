@@ -4531,13 +4531,11 @@
             {
                 "text": "\n",
                 "font_size": "normal"
-            },
-            {
-                "text": " הודעה על הפטירה \n",
-                "font_size": "normal",
-                "bold": "true"
             }
         ]
+    },
+    {"type":"subject",
+    "title":"הודעה על הפטירה"
     },
     {
         "type": "alaha",
@@ -10538,18 +10536,6 @@
             {
                 "text": "(א צג)",
                 "font_size": "7pt"
-            },
-            {
-                "text": "Converted to HTML with WordToHTML.net ",
-                "font_size": "11px"
-            },
-            {
-                "text": "| ",
-                "font_size": "11px"
-            },
-            {
-                "text": "Email Signature Generator",
-                "font_size": "11px"
             }
         ]
     },
@@ -20294,18 +20280,6 @@
             {
                 "text": " (ב שסה)",
                 "font_size": "7pt"
-            },
-            {
-                "text": "Converted to HTML with WordToHTML.net ",
-                "font_size": "11px"
-            },
-            {
-                "text": "| ",
-                "font_size": "11px"
-            },
-            {
-                "text": "Email Signature Generator",
-                "font_size": "11px"
             }
         ]
     },
@@ -29575,18 +29549,6 @@
                 "text": " תם ונשלם שבח לאל בורא עולם \n ",
                 "font_size": "normal",
                 "bold": "true"
-            },
-            {
-                "text": "Converted to HTML with WordToHTML.net ",
-                "font_size": "11px"
-            },
-            {
-                "text": "| ",
-                "font_size": "11px"
-            },
-            {
-                "text": "Email Signature Generator",
-                "font_size": "11px"
             }
         ]
     }

@@ -9657,7 +9657,7 @@
                 "font_size": "normal"
             },
             {
-                "text": " בליעת בשר וחלב בכלים \n",
+                "text": " בליעת בשר וחלב בכלים \n",
                 "font_size": "normal",
                 "bold": "true"
             }
@@ -18042,18 +18042,6 @@
             {
                 "text": "\n",
                 "font_size": "normal"
-            },
-            {
-                "text": "Converted to HTML with WordToHTML.net ",
-                "font_size": "11px"
-            },
-            {
-                "text": "| ",
-                "font_size": "11px"
-            },
-            {
-                "text": "Email Signature Generator",
-                "font_size": "11px"
             }
         ]
     },

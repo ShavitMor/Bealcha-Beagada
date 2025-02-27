@@ -27,17 +27,16 @@ const Hero = () => {
           variants={slideUpVariants}
           className="text-yellow-500 text-[52px] font-bold mb-[-30px] font-[sblFont]"
         >
-          הלכות
+         הלכות מרן הרב
         </motion.h1>
         <motion.h1
           variants={slideUpVariants}
           className="text-yellow-500 text-[52px] font-bold leading-[1] font-[sblFont]"
         >
-          הרב עובדיה יוסף
+           עובדיה יוסף זצ"ל
         </motion.h1>
         <div className="w-[120px] h-[6px] bg-yellow-500"></div>
-        <p className="text-yellow-500 text-[30px]  mb-[-25px] font-[sblFont]">על פי ספרי בהלכה ובאגדה </p>
-        <p className="text-yellow-500 text-[30px] font-[sblFont]">הרב דוד שלום נקי</p>
+        <p className="text-yellow-500 text-[30px]  mb-[-10px] font-[sblFont]">על פי ספרי בהלכה ובאגדה </p>
         <motion.div
           initial="hidden"
           whileInView="visible"

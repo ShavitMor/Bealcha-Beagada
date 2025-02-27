@@ -8456,34 +8456,18 @@
                 "font_size": "normal"
             },
             {
-                "text": "   ",
-                "font_size": "normal"
-            },
-            {
                 "text": "תם ונשלם שבח לאל בורא עולם ",
                 "font_size": "normal",
                 "bold": "true"
             },
             {
-                "text": "",
+                "text": "",
                 "font_size": "normal"
             },
             {
-                "text": "  \n",
+                "text": "  \n",
                 "font_size": "normal",
                 "bold": "true"
-            },
-            {
-                "text": "Converted to HTML with WordToHTML.net ",
-                "font_size": "11px"
-            },
-            {
-                "text": "| ",
-                "font_size": "11px"
-            },
-            {
-                "text": "Email Signature Generator",
-                "font_size": "11px"
             }
         ]
     }
