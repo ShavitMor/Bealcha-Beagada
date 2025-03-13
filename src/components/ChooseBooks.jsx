@@ -1,32 +1,8 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { slideUpVariants, zoomInVariants } from './animation';
 import { allProjects } from './export';
 import { useNavigate } from 'react-router-dom';
-
-// Lazy image component
-const LazyImage = ({ src, alt, className, onClick }) => {
-  const [imageSrc, setImageSrc] = useState(null);
-  
-  useEffect(() => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      setImageSrc(src);
-    };
-  }, [src]);
-  
-  return (
-    <div className={`${className} relative`} onClick={onClick}>
-      {!imageSrc && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-          <div className="w-8 h-8 border-4 border-yellow-600 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )}
-      {imageSrc && <img src={imageSrc} alt={alt} className={`${className} transition-opacity duration-300`} />}
-    </div>
-  );
-};
 
 const ChooseBook = () => {
   const navigate = useNavigate();
@@ -87,7 +63,7 @@ const ChooseBook = () => {
               onClick={() => handleBookClick(item.title)}
             >
               <div className="w-[60%] mx-auto">
-                <LazyImage
+                <img
                   src={item.icon}
                   alt="icon"
                   className='w-full h-full object-contain cursor-pointer'

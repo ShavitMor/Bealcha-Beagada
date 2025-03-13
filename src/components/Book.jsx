@@ -180,7 +180,7 @@ const TextSpan = ({ item, searchQuery = '' }) => {
       className += " text-l text-gray-600";
       break;
     case "8.5pt":
-      className += " text-xl text-gray-700";
+      className += " text-l text-gray-700";
       break;
     case "17px":
       className += " text-lg text-gray-700";
@@ -205,76 +205,111 @@ const TextSpan = ({ item, searchQuery = '' }) => {
     );
   }
 
+  
+
   // Updated regex that excludes periods inside parentheses and brackets
   // and periods followed by quotation marks
-  const splitText = (text) => {
-    const parts = [];
-    let currentPart = '';
-    let insideParens = 0;
-    let insideBrackets = 0;
+ const splitText = (text) => {
+  const parts = [];
+  let currentPart = '';
+  let insideParens = 0;
+  let insideBrackets = 0;
 
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i];
-      currentPart += char;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    currentPart += char;
 
-      // Track nested parentheses and brackets
-      if (char === '(' || char === '[') {
-        if (char === '(') insideParens++;
-        if (char === '[') insideBrackets++;
-      } else if (char === ')' || char === ']') {
-        if (char === ')') insideParens--;
-        if (char === ']') insideBrackets--;
-      } else if (char === '.' && 
-                 i < text.length - 1 && 
-                 text[i + 1] !== '.' && // not an ellipsis
-                 text[i + 1] !== '"' && // not followed by a double quote
-                 text[i + 1] !== "'" && // not followed by a single quote
-                 insideParens === 0 && 
-                 insideBrackets === 0) {
-        // Only split on periods that are:
-        // 1. Not inside parentheses or brackets
-        // 2. Not part of an ellipsis
-        // 3. Not followed by quotes
-        // 4. Not the last character
-        parts.push(currentPart);
-        currentPart = '';
+    // Track nested parentheses and brackets
+    if (char === '(' || char === '[') {
+      if (char === '(') insideParens++;
+      if (char === '[') insideBrackets++;
+    } else if (char === ')' || char === ']') {
+      if (char === ')') insideParens--;
+      if (char === ']') insideBrackets--;
+    } else if (char === '.' && 
+               i < text.length - 1 && 
+               text[i + 1] !== '.' && // not an ellipsis
+               text[i + 1] !== '"' && // not followed by a double quote
+               text[i + 1] !== "'" && // not followed by a single quote
+               insideParens === 0 && 
+               insideBrackets === 0) {
+      
+      // Check if this is a Hebrew letter marker (א., ב., ג., etc.)
+      const isHebrewLetterMarker = i > 0 && 
+                                   // Check if previous character is a Hebrew letter in the range א-ת
+                                   /[\u05D0-\u05EA]/.test(text[i-1]) && 
+                                   // Check if it's just a single character before the period
+                                   (i === 1 || /\s/.test(text[i-2]));
+      
+      // Add the current part with period to parts
+      parts.push(currentPart);
+      currentPart = '';
+      
+      // Add a special marker for Hebrew letter markers to handle in the TextSpan component
+      if (isHebrewLetterMarker) {
+        parts[parts.length - 1] = {
+          text: parts[parts.length - 1],
+          isHebrewMarker: true
+        };
       }
     }
+  }
 
-    if (currentPart) {
-      parts.push(currentPart);
+  if (currentPart) {
+    parts.push(currentPart);
+  }
+
+  // Filter out empty strings, but keep objects
+  return parts.filter(part => {
+    if (typeof part === 'object') {
+      return true; // Keep objects
     }
+    return part.trim() !== ''; // Filter out empty strings
+  });
+};
 
-    return parts.filter(part => part.trim() !== '');
-  };
 
-  const parts = item.text.split('\n').reduce((acc, part) => {
+  
+
+   // Process text into parts, handling line breaks
+  const processedParts = [];
+  item.text.split('\n').forEach(part => {
     if (part.trim() === '') {
-      acc.push('\n');
+      processedParts.push('\n');
     } else {
-      acc.push(...splitText(part));
+      const splitParts = splitText(part);
+      processedParts.push(...splitParts);
     }
-    return acc;
-  }, []);
+  });
 
-  return (
+
+ return (
     <span className={className}>
-      {parts.map((part, index) => (
-        <React.Fragment key={index}>
-          {part === '\n' ? (
-            <br />
-          ) : (
-            item.bold ? 
-              <strong> {highlightText(part.trim(), searchQuery)} </strong> : 
-              highlightText(part.trim(), searchQuery)
-          )}
-          {part.endsWith('.') && 
-           !part.endsWith('."') && 
-           !part.endsWith(".'") && 
-           index < parts.length - 1 && 
-           <br />}
-        </React.Fragment>
-      ))}
+      {processedParts.map((part, index) => {
+        // Check if this part is an object with isHebrewMarker flag
+        const isHebrewMarker = part && typeof part === 'object' && part.isHebrewMarker;
+        const partText = isHebrewMarker ? part.text : part;
+        
+        return (
+          <React.Fragment key={index}>
+            {partText === '\n' ? (
+              <br />
+            ) : (
+              item.bold ? 
+                <strong> {highlightText(typeof partText === 'string' ? partText.trim() : partText, searchQuery)} </strong> : 
+                highlightText(typeof partText === 'string' ? partText.trim() : partText, searchQuery)
+            )}
+            {/* Only add line break after periods that are NOT Hebrew letter markers */}
+            {typeof partText === 'string' && 
+             partText.endsWith('.') && 
+             !partText.endsWith('."') && 
+             !partText.endsWith(".'") && 
+             !isHebrewMarker &&
+             index < processedParts.length - 1 && 
+             <br />}
+          </React.Fragment>
+        );
+      })}
     </span>
   );
 };
